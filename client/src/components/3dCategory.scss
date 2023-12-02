@@ -1,0 +1,66 @@
+.perspective {
+  width: 100%;
+  perspective: 1000px;
+}
+
+#top {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.card {
+  width: 350px;
+  height: 150px;
+  margin: auto;
+  box-shadow: 0 70px 63px -60px #494848;
+  transform-style: preserve-3d;
+  transition: transform .05s linear;
+
+  .thumb {
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      border-radius: 15px;
+
+      &:after {
+          background: inherit;
+          content: '';
+          display: block;
+          position: absolute;
+          left: -60px;
+          top: 40px;
+          width: 100%;
+          height: 108%;
+          z-index: -1;
+          filter: blur(55px);
+      }
+  }
+
+  h2 {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      font-size: 30px;
+      font-weight: 100;
+      transform: translateZ(80px);
+  }
+
+  span {
+      position: absolute;
+      bottom: 40px;
+      right: -280px;
+      font-size: 37px;
+      font-weight: 600;
+      transform: translateZ(35px);
+  }
+}
+
+img {
+  margin: auto;
+  display: block;
+  border-radius: 15px;
+}
