@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGO_URL).then(
   console.log("Db connected")
 )
 
-const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:3000', 'https://invitingyou-test-server.vercel.app/'];
+const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:3000', 'https://invitingyou-test.vercel.app'];
 
 app.use(cors({
   credentials: true,
