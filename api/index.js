@@ -24,9 +24,18 @@ mongoose.connect(process.env.MONGO_URL).then(
   console.log("Db connected")
 )
 
+const allowedOrigins = ['http://127.0.0.1:5173', 'http://localhost:3000', 'https://invitingyou-test-server.vercel.app/'];
+
 app.use(cors({
   credentials: true,
-  origin: 'http://127.0.0.1:5173',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use('/api/uploads', express.static('public/uploads'));
