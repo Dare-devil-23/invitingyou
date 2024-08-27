@@ -33,6 +33,7 @@ const Layout = () => {
       },
     },
   };
+  
   return (
       <div className="font-forum transition-colors duration-300">
         <div className='right-0 bottom-0 fixed z-50'>

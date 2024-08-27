@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { BsPlusCircle } from 'react-icons/bs'
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import customToast from '../hooks/customToast';
 import HoverLine from '../components/HoverLine';
 import { Link } from 'react-router-dom';
+import apiClient from '../axios';
 
 const AddSubCategory = () => {
   const [categories, setCategoies] = useState([])
@@ -22,7 +22,7 @@ const AddSubCategory = () => {
   }, [])
 
   const getSubCategories = () => {
-    axios.get(`/subcategories`).then((res) => {
+    apiClient.get(`/subcategories`).then((res) => {
       setCategoies(res.data)
     }).catch(err => {
       console.error(err)
@@ -33,7 +33,7 @@ const AddSubCategory = () => {
     e.preventDefault()
     const formData = new FormData()
     formData.append('sub_category', subCategory)
-    axios.put(`/categories/${selectedCategory._id}`, formData, {
+    apiClient.put(`/categories/${selectedCategory._id}`, formData, {
       headers: { 'Content-type': 'application/json' },
     }).then(res => {
       customToast(`Sub Category created in ${selectedCategory.name}`)

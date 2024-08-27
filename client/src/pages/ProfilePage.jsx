@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import customToast from "../hooks/customToast.jsx";
+import apiClient from "../axios.js";
 
 export default function ProfilePage() {
   const { ready, user, setUser } = useContext(UserContext);
 
   const logOutUser = () => {
-    axios.post('/logout').then(res => {
+    apiClient.post('/logout').then(res => {
       setUser(null)
       customToast("Logged out")
     }).catch((err) => {

@@ -28,6 +28,7 @@ app.use(cors({
   credentials: true,
   origin: 'http://127.0.0.1:5173',
 }));
+
 app.use('/api/uploads', express.static('public/uploads'));
 
 const storage = multer.diskStorage({

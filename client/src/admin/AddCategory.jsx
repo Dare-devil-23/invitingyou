@@ -1,8 +1,8 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import customToast from '../hooks/customToast'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
+import apiClient from '../axios'
 
 const AddCategory = () => {
   const [category, setCategory] = useState({
@@ -18,7 +18,7 @@ const AddCategory = () => {
     formData.append('description', category.description)
     formData.append('hero_banner', category.hero_banner)
 
-    axios.post('/categories', formData, {
+    apiClient.post('/categories', formData, {
       headers: { 'Content-type': 'multipart/form-data' }
     }).then(res => {
       if (res.status === 200) {

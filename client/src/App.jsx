@@ -3,7 +3,6 @@ import IndexPage from "./pages/IndexPage";
 import Layout from "./components/Layout";
 import RegisterPage from "./pages/RegisterPage";
 import Login from './components/Login';
-import axios from "axios";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import ManageInvitation from "./pages/ManageInvitation.jsx";
 import CreateInvitation from "./pages/CreateInvitation.jsx";
@@ -19,9 +18,6 @@ import Careers from "./pages/Careers.jsx";
 import AddSubCategory from "./admin/AddSubCategory";
 import AddCards from "./admin/AddCards";
 import Editor from "./pages/editor/Editor";
-
-axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
-axios.defaults.withCredentials = true;
 
 function App() {
   return (

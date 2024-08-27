@@ -1,17 +1,17 @@
-import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import LoadImg from '../components/LoadImg'
 import { Link } from 'react-router-dom'
 import Accordion from '../components/Accordion'
 import { BsHeart } from 'react-icons/bs'
 import { WatchListContext } from '../context/WatchListContext'
+import apiClient from '../axios'
 
 const AllCards = () => {
   const [cards, setCards] = useState([])
   const { watchList, setWatchList } = useContext(WatchListContext)
 
   useEffect(() => {
-    axios.get("/cards").then(res => {
+    apiClient.get("/cards").then(res => {
       setCards(res.data)
     }).catch(err => {
       console.error(err)

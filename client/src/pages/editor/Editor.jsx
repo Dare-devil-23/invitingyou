@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { fabric } from "fabric";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-import axios from "axios";
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap_white.css';
 import { useLocation } from "react-router-dom";
 import { BsSlashLg, BsBorderWidth } from "react-icons/bs";
 import { RiPaletteLine, RiPaintFill } from "react-icons/ri";
 import { BiCircle, BiRectangle, BiText, BiPencil, BiBrushAlt, BiUndo, BiRedo, BiCrop, BiTrashAlt } from "react-icons/bi";
+import apiClient from "../../axios";
 
 const addBackground = (editor, fabric, card) => {
   fabric.Image.fromURL(
@@ -40,7 +40,7 @@ export default function App() {
 
   useEffect(() => {
     if (cardId) {
-      axios.get(`card/${cardId}`).then(res => {
+      apiClient.get(`card/${cardId}`).then(res => {
         setCard(res.data)
       }).catch(err => {
         console.error(err)

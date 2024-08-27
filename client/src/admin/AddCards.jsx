@@ -1,9 +1,9 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import customToast from '../hooks/customToast'
 import { Link, useLocation } from 'react-router-dom'
+import apiClient from '../axios'
 
 const AddCards = () => {
 
@@ -30,7 +30,7 @@ const AddCards = () => {
     formData.append('image', card.image)
 
     if (subcategory?._id) {
-      axios.put(`/subcategories/${subcategory?._id}`, formData, {
+      apiClient.put(`/subcategories/${subcategory?._id}`, formData, {
         headers: { 'Content-type': 'multipart/form-data' },
       }).then(res => {
         customToast(`Card added to ${subcategory?.name}`)

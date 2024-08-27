@@ -1,5 +1,5 @@
 import {createContext, useEffect, useState} from "react";
-import axios from "axios";
+import apiClient from "../axios";
 
 export const UserContext = createContext({});
 
@@ -8,7 +8,7 @@ export function UserContextProvider({children}) {
   const [ready,setReady] = useState(false);
   useEffect(() => {
     if (!user) {
-      axios.get('/profile').then(({data}) => {
+      apiClient.get('/profile').then(({data}) => {
         setUser(data);
         setReady(true);
       });

@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import axios from "axios";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { motion } from "framer-motion";
 import { UserContext } from "../context/UserContext";
 import { Navigate } from "react-router-dom";
 import customToast from "../hooks/customToast";
+import apiClient from "../axios";
 
 
 export default function RegisterPage() {
@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   const registerUser = (ev) => {
     ev.preventDefault();
-    axios.post('/register', {
+    apiClient.post('/register', {
       name,
       email,
       password,

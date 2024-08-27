@@ -1,10 +1,10 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import LoadImg from '../components/LoadImg'
 import customToast from '../hooks/customToast'
 import { BsHeart } from 'react-icons/bs'
 import Accordion from '../components/Accordion'
+import apiClient from '../axios'
 
 const Category = () => {
   const [category, setCategory] = useState({})
@@ -13,7 +13,7 @@ const Category = () => {
   const sub_cat = location.state?.sub_cat
 
   useEffect(() => {
-    axios.get(sub_cat ? `/categories/${id}/?sub_cat=${sub_cat}` : `/categories/${id}`).then((res) => {
+    apiClient.get(sub_cat ? `/categories/${id}/?sub_cat=${sub_cat}` : `/categories/${id}`).then((res) => {
       setCategory(res.data)
     }).catch((err) => {
       customToast(err.response.message || "Something went wrong", "error")

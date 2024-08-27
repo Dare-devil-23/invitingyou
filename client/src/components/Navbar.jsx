@@ -1,7 +1,6 @@
 import { BsHandbag, BsHeart } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import HoverLine from './HoverLine';
 import otherLinks from '../constants/otherLinks';
 import { HiOutlineUser } from 'react-icons/hi';
@@ -10,6 +9,7 @@ import { useDetectClickOutside } from 'react-detect-click-outside';
 import { SlideDown } from 'react-slidedown'
 import 'react-slidedown/lib/slidedown.css'
 import toSnakeCase from '../helpers/stringToSnake';
+import apiClient from '../axios';
 
 const Navbar = () => {
   const [openAllInvites, setopenAllInvites] = useState(false)
@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [])
 
   const getCategories = () => {
-    axios.get(`/subcategories`).then((res) => {
+    apiClient.get(`/subcategories`).then((res) => {
       setAllInvites(res.data)
     }).catch(err => {
       console.error(err)

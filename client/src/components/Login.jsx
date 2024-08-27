@@ -4,9 +4,9 @@ import { FcGoogle } from "react-icons/fc"
 import { ImFacebook } from "react-icons/im"
 import { Link } from 'react-router-dom'
 import { useContext, useState } from "react";
-import axios from "axios";
 import { UserContext } from "../context/UserContext.jsx";
 import customToast from '../hooks/customToast'
+import apiClient from '../axios.js'
 
 const Login = ({ setOpen }) => {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ const Login = ({ setOpen }) => {
 
   const logInUser = (ev) => {
     ev.preventDefault();
-    axios.post('/login', { email, password }).then((res) => {
+    apiClient.post('/login', { email, password }).then((res) => {
       setUser(res.data)
       customToast("Logged in")
       window.location.href = '/account';

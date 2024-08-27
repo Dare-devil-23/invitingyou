@@ -1,14 +1,14 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ThreedCategory from "../components/3dCategory"
 import toSnakeCase from '../helpers/stringToSnake'
+import apiClient from '../axios'
 
 const Categories = () => {
   const [categories, setCategoies] = useState([])
 
   const getCategories = () => {
-    axios.get("/subcategories").then((res) => {
+    apiClient.get("/subcategories").then((res) => {
       setCategoies(res.data)
     }).catch(err => {
       console.error(err)
