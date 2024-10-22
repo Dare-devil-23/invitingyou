@@ -2,7 +2,7 @@ import React from 'react'
 import HoverLine from "./HoverLine"
 import { FcGoogle } from "react-icons/fc"
 import { ImFacebook } from "react-icons/im"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 import customToast from '../hooks/customToast'
@@ -13,12 +13,14 @@ const Login = ({ setOpen }) => {
   const [password, setPassword] = useState('');
   const { setUser } = useContext(UserContext);
 
+  const navigate = useNavigate();
+
   const logInUser = (ev) => {
     ev.preventDefault();
     apiClient.post('/login', { email, password }).then((res) => {
       setUser(res.data)
       customToast("Logged in")
-      window.location.href = '/account';
+      navigate('/account')
     }).catch((err) => {
       customToast(err.response?.data || "Something went wrong", "error")
     })

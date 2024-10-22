@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import LoadImg from '../components/LoadImg'
 import customToast from '../hooks/customToast'
@@ -58,14 +58,14 @@ const Category = () => {
                   </div>
                 </div>
                 <div className="container mx-auto">
-                  <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid w-full grid-cols-12 gap-6 mb-6">
                     {
                       category.sub_categories.map((subCategory) => (
-                        <div key={subCategory._id}>
+                        <Fragment key={subCategory._id}>
                           {
                             subCategory.cards.map((card) => (
-                              <div className="w-full" key={card._id}>
-                                <Link to={`/customize/${card._id}`} state={{ cardId: card._id }} className="flex justify-center flex-col w-52 mx-auto cursor-pointer overflow-hidden relative z-[1]">
+                              <div key={card._id} className='col-span-12 md:col-span-4 lg:col-span-3'>
+                                <Link to={`/customize/${card._id}`} state={{ cardId: card._id }} className="flex flex-col w-fit cursor-pointer overflow-hidden relative z-[1]">
                                   <LoadImg src={card.image} alt={card._id} className="w-full h-[280px] hover:scale-105 transition-all duration-500" />
                                   <div className='flex justify-between font-medium mt-2'>
                                     <h1>{card.name}</h1>
@@ -79,7 +79,7 @@ const Category = () => {
                               </div>
                             ))
                           }
-                        </div>
+                        </Fragment>
                       ))
                     }
                   </div>

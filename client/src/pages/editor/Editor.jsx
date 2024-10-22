@@ -141,8 +141,8 @@ export default function App() {
     return <>loading</>
   } else {
     return (
-      <div className="">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="min-h-[80dvh] bg-gray-300 dark:bg-zinc-800 flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full">
           <div className="grid grid-cols-3 gap-4 py-5 px-10">
             <h1 className="text-2xl col-span-full">Edit Canvas</h1>
             <button
@@ -283,7 +283,7 @@ export default function App() {
           </div>
           {
             cardId ?
-              <div className="bg-gray-300 relative dark:bg-zinc-700 p-14 lg:p-10 h-full flex items-center justify-center lg:col-span-2">
+              <div className="relative p-14 lg:p-10 h-full flex items-center justify-center lg:col-span-2">
                 <FabricJSCanvas className="sample-canvas border-2 border-black" onReady={onReady} />
                 <div className="absolute right-10 top-0">
                   <button type="submit" className='my-5 text-lg transition-all duration-500 shadow-lg px-5 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l'>

@@ -52,7 +52,7 @@ const AddCards = () => {
   }
   if(!location.state){
     return (
-      <div className='text-xl text-center'>
+      <div className='text-xl text-center min-h-[80vh]'>
         You have not selected any subcategory please select <Link to="/admin/managesubcategory" className='underline text-fuchsia-500'>here.</Link>
       </div>
     )
